@@ -1,2 +1,2 @@
-database_username:
-database_password:
+database_username: 'rails'
+database_password: 'rails'
