@@ -1,0 +1,11 @@
+<h1> product </h1>
+
+<ul>
+  <% @products.each do |product| %>
+    <li>
+      <%= link_to product.name, user_product_path(current_user, product) %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Sign out", destroy_user_session_path, method: :delete %>

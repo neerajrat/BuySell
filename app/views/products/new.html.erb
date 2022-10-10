@@ -1,0 +1,22 @@
+<h1>New Product</h1>
+
+<%= form_with model: @product do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :detail %><br>
+    <%= form.text_area :detail %>
+  </div>
+
+  <div>
+    <%= form.label :price %><br>
+    <%= form.text_area :price %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
