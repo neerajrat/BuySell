@@ -1,0 +1,19 @@
+<h1> my product </h1>
+   
+
+
+<ul>
+<% current_user.products.each do |product| %>
+    <%= image_tag product.image if product.image.attached? %>
+      <p><%= product.price %></p>
+    <li>
+      <%= link_to product.name, user_product_path(current_user, product) %>
+    </li>
+  <% end %>
+</ul>
+
+
+
+
+
+  

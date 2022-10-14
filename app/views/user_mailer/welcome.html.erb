@@ -1,0 +1,14 @@
+<h1>Hi</h1><p>
+  <%= @user.email %> welcome to the site!
+</p>
+<p>
+  Visit us <%= link_to "here", root_url%>
+</p>
+<h1><%= @product.name %></h1>
+<p><%= @product.price %></p>
+<p><%= @product.detail %></p>
+
+
+<%= button_to "Accept", product_accept_url(@product) , method: :patch%> 
+<%= button_to "Reject", product_reject_url(@product), method: :patch%> 
+

@@ -1,3 +1,16 @@
-<h1><%= @products.name %></h1>
-<p><%= @products.price %></p>
-<p><%= @products.detail %></p>
+<%= image_tag @product.image if @product.image.attached? %>
+<h1><%= @product.name %></h1>
+<p><%= @product.price %></p>
+<p><%= @product.detail %></p>
+
+
+
+<li>
+<%= link_to "Edit", edit_user_product_path(current_user, @product.id) %>
+</li>
+
+
+<li>
+<%= link_to "Destroy", user_product_path(current_user, @product.id), data:{turbo_method: :delete,
+turbo_confirm: "Are you sure?"} %>
+</li>
