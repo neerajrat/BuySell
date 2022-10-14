@@ -1,11 +1,14 @@
-<h1> product </h1>
+<h1> All Product </h1>
 
 <ul>
-  <% @products.each do |product| %>
+
+  <% @product.each do |product| %>
+      <%= image_tag product.image if product.image.attached? %>
+      <p><%= product.price %></p>
     <li>
-      <%= link_to product.name, user_product_path(current_user, product) %>
+     <%= link_to product.name, user_product_path(current_user, product) %>
     </li>
   <% end %>
 </ul>
-
-<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+<li> <%= link_to "+SELL", products_sell_path %> </li>
+<li> <%= link_to "Sign out", destroy_user_session_path, method: :delete %> </li>
