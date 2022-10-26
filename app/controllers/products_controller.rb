@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  
     def index
         @product = Product.all
     end
@@ -9,12 +10,12 @@ class ProductsController < ApplicationController
 
 
     def new
-        @product = Product.new
+      @product = Product.new(category_id: params[:category_id])
     end
     
     def create
         @product =current_user.products.new(products_params)
-    
+        
         if @product.save
           UserMailer.welcome(current_user,@product).deliver_now 
           redirect_to root_path
@@ -45,7 +46,7 @@ class ProductsController < ApplicationController
     end
 
     def sell
-      
+      @category = Category.all
     end
 
     def detail
@@ -62,21 +63,12 @@ class ProductsController < ApplicationController
 
 
   def reject
-    if @product.rejected!
-      @product = Product.find(@product.id)
-      @product.status("reject")
-    end
+
   end
-
-
-
-
-
-
 
   private
     def products_params
-      params.require(:product).permit(:name, :detail, :price , :image , :status)
+      params.require(:product).permit(:name, :detail, :price , :image , :status, :category_id)
     end
 
 end

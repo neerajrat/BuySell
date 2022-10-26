@@ -11,6 +11,9 @@ Rails.application.routes.draw do
 
   get  "/home/user", to:  "home#user"
   get  "/home/admin", to:  "home#admin"
+  get  "/users/sign_out", to:  "users/sessions#destroy"
+  
+
 
   get  "/products/index", to:  "products#index"
   get  "/products/sell", to:  "products#sell"
@@ -18,7 +21,7 @@ Rails.application.routes.draw do
   get  "/products/:id", to: "products#show"
 
   patch  "/product/accept", to:  "products#accept"
-  patch  "/product/reject", to:  "products#reject"
+  get  "/product/reject", to:  "products#reject"
 
 
 
