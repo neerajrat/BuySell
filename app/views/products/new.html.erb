@@ -12,6 +12,7 @@
     </div>
   
     <div>
+
       <%= form.label :price %><br>
       <%= form.text_field :price %>
     </div>
@@ -20,9 +21,14 @@
       <%= form.label :image %><br>
       <%= form.file_field :image %>
     </div> 
-   
     <div>
-       <%= form.submit "submit" %>
+      <%= form.hidden_field :category_id %><br>
+    </div> 
+
+
+
+    <div>
+      <%= form.submit "submit" %>
     </div>
 
   <% end %>

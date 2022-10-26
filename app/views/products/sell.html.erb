@@ -1,5 +1,36 @@
-<h1> sell </h1>
+<p> Sell your Product </p>
 <li> <%= link_to "My Product", products_myproduct_path(current_user.id) %> </li>
+<table class="table w-25 table-bordered border-primary align-middle " >
+  <thead>
+    <tr>
+      <th scope="col">Choose a category</th>
+    </tr>
+  </thead>
+  <tbody>
 
+    <tr>
+      <td><%= link_to "Cars", new_user_product_path(current_user.id,category_id: 1) %></td>
+    </tr>
 
-<li> <%= link_to "Add Product", new_user_product_path(current_user.id) %> </li>
+    <tr>
+      <td><%= link_to "Bikes", new_user_product_path(current_user.id,category_id: 2) %></td>
+    </tr>
+
+    <tr>
+      <td><%= link_to "Mobile", new_user_product_path(current_user.id,category_id: 3) %></td>
+    </tr>
+
+    <tr>  
+      <td><%= link_to "Properties", new_user_product_path(current_user.id,category_id: 4) %></td>
+    </tr>
+
+    <tr>
+      <td><%= link_to "Electronic", new_user_product_path(current_user.id,category_id: 5) %></td>
+    </tr>
+
+    <tr>      
+      <td><%= link_to "Furniture", new_user_product_path(current_user.id,category_id: 6) %></td>
+    </tr>
+
+  </tbody>
+</table>
