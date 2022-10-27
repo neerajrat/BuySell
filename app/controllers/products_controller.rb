@@ -1,8 +1,18 @@
 class ProductsController < ApplicationController
-  
+  before_action :authenticate_user!
+
     def index
+        puts "*****************************************index**************************************************************"
         @product = Product.page(params[:page]).per(12)
     end
+
+
+    def search
+      puts "*******************************************search**************************************************************"
+      @q = Product.ransack(params[:name])
+      @product = @q.result
+    end
+  
 
     def show
         @product = Product.find(params[:id])

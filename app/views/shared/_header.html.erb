@@ -14,19 +14,24 @@
 
         </li>
 
+        
         <form class="d-flex">
             <input class="form-control me-2 g-4" type="search" placeholder="Search" aria-label="Search">
             <button  type="submit" class="btn btn-outline-light">Search</button>
-        </form>
+      </form>
 
       </ul>
     </div>
-    <div class="dropdown dropdown-menu-end">
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
-      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
+    
+    <div class="dropdown">
+      <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+      <%= current_user.present? ? current_user.name[0,1] : "login"%>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">  
+        <li><a class="dropdown-item" href="#"><%= current_user.present? ? current_user.name : "login"%></a></li>
         <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="<%= edit_user_registration_path  (current_user) %>">edit profile</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
         <a class="dropdown-item" class="icon" href="/users/sign_out"><span class="glyphicon glyphicon-log-out"></span>sign-out</a>
       </ul>
     </div>
