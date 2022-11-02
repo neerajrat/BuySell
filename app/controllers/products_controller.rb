@@ -2,15 +2,15 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!
 
     def index
-        puts "*****************************************index**************************************************************"
-        @product = Product.page(params[:page]).per(12)
+        @product = Product.where(status:"accepted").page(params[:page]).per(12)
+    end
+    
+    def productname
+      @product = Product.all
     end
 
 
     def search
-      puts "*******************************************search**************************************************************"
-      @q = Product.ransack(params[:name])
-      @product = @q.result
     end
   
 
@@ -63,18 +63,31 @@ class ProductsController < ApplicationController
       @product = Product.find(params[:id])
     end
     
-  
-  def accept
-    if @product.accepted!
-      @product = Product.find(@product.id)
-      @product.status("accept")
+      
+    def pending
+      @product = Product.where(status:"pending")
     end
-  end
+
+    def accept
+      @product = Product.where(status:"accepted")
+      if params[:product_id].present?
+        @product = Product.find(params[:product_id])
+        if @product.update(status:"accepted")
+          redirect_to @product
+        end
+      end
+    end
 
 
-  def reject
-
-  end
+    def reject
+      @product = Product.where(status:"rejected")
+      if params[:product_id].present?
+        @product = Product.find(params[:product_id])
+        if @product.update(status:"rejected")
+          redirect_to @product
+        end
+      end
+    end
 
   private
     def products_params

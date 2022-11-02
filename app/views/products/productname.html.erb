@@ -1,0 +1,16 @@
+
+<h1>Products</h1>
+<p class="text-center p-1"><%= link_to "Pending" , product_pending_path,style: 'color:#FF0000;'%> 
+  <%= link_to "Accept", product_accept_path ,style: 'color:#FF0000;'%>
+  <%= link_to "Reject",product_reject_path ,style: 'color:#FF0000 ;' "m-5" %>
+</p>
+
+<div class="row row-cols-1 row-cols-md-5 g-2  m-1 "> 
+
+
+  <% @product.each do |product| %>
+    <li>
+      <%=link_to  product.name, product %>
+    </li>
+  <% end %>
+</div>
