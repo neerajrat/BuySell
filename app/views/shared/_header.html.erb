@@ -10,30 +10,43 @@
           <a class="nav-link active" aria-current="page" href="/products/sell">+Sell</a>
         </li>
 
-        <li class="nav-item dropdown dropdown-menu-end">
-
-        </li>
-
-        
-        <form class="d-flex">
+        <form class="d-flex m-2">
             <input class="form-control me-2 g-4" type="search" placeholder="Search" aria-label="Search">
             <button  type="submit" class="btn btn-outline-light">Search</button>
-      </form>
+        </form>
+        <div>
 
       </ul>
+
     </div>
-    
+
     <div class="dropdown">
-      <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-      <%= current_user.present? ? current_user.name[0,1] : "login"%>
-      </a>
-      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">  
-        <li><a class="dropdown-item" href="#"><%= current_user.present? ? current_user.name : "login"%></a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="<%= edit_user_registration_path  (current_user) %>">edit profile</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <a class="dropdown-item" class="icon" href="/users/sign_out"><span class="glyphicon glyphicon-log-out"></span>sign-out</a>
-      </ul>
+        <% if current_user.present? %>
+          <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= current_user.name[0,1]%></a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">  
+            <li><a class="dropdown-item " href=""><%=current_user.name %></a></li>
+            <li><a class="dropdown-item " href="<%=user_path(current_user) %>">view profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="<%=edit_user_path(current_user) %>">edit your profile</a></li>
+            <a class="dropdown-item" class="icon" href="/users/sign_out"><span class="glyphicon glyphicon-log-out"></span>sign-out </a>
+          </ul>
+        <% end %>
+    </div>
+
+      <% if current_user.present? %>
+        <div class="dropdown p-2">
+          <% if current_user.role!= "User"%>
+            <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Admin</a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">  
+            <li><a class="dropdown-item " href="<%=users_path %>">Users</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="<%=product_productname_path %>">Products</a></li>
+          </ul>
+          <% end %>
+       </div>
+      <% end %>
+
     </div>
   </div>
   </div>
