@@ -2,11 +2,10 @@
     <h1><%= @product.name %></h1>
     <p>₹ <%= @product.price %></p>
     <p><%= @product.detail %></p>  
-    <p><%= current_user.id  %> </p> 
-        <p><%=@product.user_id %> </p> 
+  
 
     <% if current_user.role=="Admin" || current_user.id ==@product.user_id %>    
-|       <p> <%= link_to "Edit", edit_user_product_path(current_user, @product.id) %></p>
+        <p> <%= link_to "Edit", edit_user_product_path(current_user, @product.id) %></p>
         <p><%= link_to "Destroy", user_product_path(current_user, @product.id), data:{turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p> 
     <% end %>
 
