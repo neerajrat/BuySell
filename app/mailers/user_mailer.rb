@@ -11,4 +11,26 @@ class UserMailer < ApplicationMailer
 
     mail to: @user.email
   end
+  
+  def proposal (users,proposal)
+    @proposal = proposal
+    @user = User.find(users.id)
+
+    mail to: @user.email
+  end
+
+  def accept (users,product)
+    @product = product
+    @user = User.find(users.id)
+
+    mail to: @user.email
+  end
+
+  def reject (users,product)
+    @product = product
+    @user = User.find(users.id)
+
+    mail to: @user.email
+  end
+
 end
