@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_28_102918) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_04_120500) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,9 +43,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_28_102918) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "category"
+    t.string "category_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "offers", force: :cascade do |t|
+    t.string "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "product_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -59,6 +67,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_28_102918) do
     t.string "status"
     t.integer "category_id"
     t.index ["user_id"], name: "index_products_on_user_id"
+  end
+
+  create_table "proposals", force: :cascade do |t|
+    t.string "amount"
+    t.bigint "product_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_proposals_on_product_id"
+    t.index ["user_id"], name: "index_proposals_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -85,4 +103,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_28_102918) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "products", "users"
+  add_foreign_key "proposals", "products"
+  add_foreign_key "proposals", "users"
 end
