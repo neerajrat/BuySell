@@ -2,21 +2,33 @@
     <div>
       <%= form.label :name %><br>
       <%= form.text_field :name %>
+      <% @product.errors.full_messages_for(:name).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
     </div>
   
     <div>
       <%= form.label :detail %><br>
       <%= form.text_field :detail %>
+      <% @product.errors.full_messages_for(:detail).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
     </div>
   
     <div>
       <%= form.label :price %><br>
       <%= form.text_field :price %>
+      <% @product.errors.full_messages_for(:price).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
     </div>
   
     <div>
       <%= form.label :image %><br>
       <%= form.file_field :image %>
+      <% @product.errors.full_messages_for(:image).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
     </div> 
    
     <div>

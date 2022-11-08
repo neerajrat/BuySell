@@ -1,0 +1,10 @@
+
+<h1>offor for your product</h1>
+
+<ul>
+  <% @proposal.each do |proposal| %>
+     <li> <%=  proposal.amount  %> </li>
+      <%= link_to "Accept" ,product_offeraccept_path(amount:proposal.amount ,product_id:proposal.product_id) %>
+    </li>
+  <% end %>
+</ul>

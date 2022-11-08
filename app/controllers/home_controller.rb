@@ -3,10 +3,5 @@ class HomeController < ApplicationController
   def index
      redirect_to products_index_path
   end
-  def user
-  end
-  def admin
-  end
-  def main
-  end
+
 end

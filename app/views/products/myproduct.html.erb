@@ -2,7 +2,7 @@
   
 <div class="row row-cols-1 row-cols-md-4 g-2  m-2 ">
     
- <% current_user.products.each do |product| %>
+ <% @product.each do |product| %>
     <div class="col-md-2">
       <div class="card h-100 ">
         <a href="<%=user_product_path(current_user, product)%>">
@@ -21,7 +21,8 @@
       <% end %>
     </div>
   
-  
+  <%= render "shared/pagination" ,product: @product %>
+
   
 
 

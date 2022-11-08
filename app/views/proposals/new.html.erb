@@ -1,0 +1,19 @@
+<h1>Your Proposal</h1>
+
+<%= form_for @proposal do |form| %>
+<div>
+      <%= form.hidden_field :product_id, value: @proposal.product_id %>
+
+</div>
+    <div>
+      <%= form.label :amount %><br>
+      <%= form.text_field :amount %>
+      <% @proposal.errors.full_messages_for(:amount).each do |message| %>
+         <div><%= message %></div>
+      <% end %>
+    </div>
+
+    <div>
+      <%= form.submit "submit" %>
+    </div>
+<% end %>
