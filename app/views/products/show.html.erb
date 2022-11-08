@@ -1,9 +1,11 @@
     <%= image_tag @product.image ,width: 400 if @product.image.attached? %>
     <p><%= @product.name %></p>
     <h1>₹ <%= @product.price %></h1>
-    <% if current_user.id !=@product.user_id %>    
+    <% if current_user.id !=@product.user_id %>
     <div class="d-grid gap-1 col-2 m-">
-        <a href="<%=product_offer_path() %>" class="btn btn-primary btn-lg " tabindex="-1" role="button" aria-disabled="true">Make offer</a>
+        <%= link_to "Make a Offer", new_proposals_path(product_id: @product.id) %>
+    <td><%= link_to "view your offer", view_path(product_id: @product.id) %></td>
+
     </div>
     <% end %>
     <p><%= @product.detail %></p>  
@@ -17,6 +19,10 @@
         <p><%= link_to "Accept Product" , product_accept_path(product_id: @product.id)%></p>
         <p><%= link_to "Reject Product" , product_reject_path(product_id: @product.id)%></p>
     <% end %>
+ 
     
 
 
+   <% if current_user.id==@product.user_id %>    
+      <td><%= link_to "offers", proposals_prodcut_path(product_id: @product.id) %></td>
+    <% end %>
